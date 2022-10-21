@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:u_finance/pages/create_account.dart';
-
-import '../pages/home.dart';
+import '../src/home/index_page.dart';
 import '../utils/app_colors.dart';
 
+// ignore: must_be_immutable
 class CustomFabButton extends StatelessWidget {
   String text;
   IconData icon;
@@ -19,7 +18,7 @@ class CustomFabButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         textStyle: const TextStyle(fontSize: 25),
         fixedSize: Size(MediaQuery.of(context).size.width, 50),
-        backgroundColor: AppColors.backgrountButtonColor,
+        backgroundColor: AppColors.backgroundButtonColor,
         shape: const RoundedRectangleBorder(
             borderRadius:
                 BorderRadius.vertical(top: Radius.elliptical(80, 80))),
@@ -43,7 +42,7 @@ class CustomFabButton extends StatelessWidget {
 }
 
 _navigateToNewAccountPage(BuildContext context) {
-  Navigator.of(context).push(
-    MaterialPageRoute(builder: (context) => const CreateAccount()),
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder: (context) => const IndexPage()),
   );
 }

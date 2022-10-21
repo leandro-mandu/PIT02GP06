@@ -1,26 +1,59 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 class User {
-  String _nome;
-  String _email;
-  String _senha;
-  User(this._email, this._nome, this._senha);
-  String get nome => _nome;
-  String get email => _email;
-  bool testSenha(String senha) {
-    if (senha == _senha) {
-      return true;
-    }
-    return false;
+  String nome;
+  String email;
+  String senha;
+  User(
+    this.nome,
+    this.email,
+    this.senha,
+  );
+
+  User copyWith({
+    String? nome,
+    String? email,
+    String? senha,
+  }) {
+    return User(
+      nome ?? this.nome,
+      email ?? this.email,
+      senha ?? this.senha,
+    );
   }
 
-  void set nome(String nome) {
-    _nome = nome;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'nome': nome,
+      'email': email,
+      'senha': senha,
+    };
   }
 
-  void set email(String email) {
-    _email = email;
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
+      map['nome'] as String,
+      map['email'] as String,
+      map['senha'] as String,
+    );
   }
 
-  void set senha(String senha) {
-    _senha = senha;
+  String toJson() => json.encode(toMap());
+
+  factory User.fromJson(String source) =>
+      User.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'User(nome: $nome, email: $email, senha: $senha)';
+
+  @override
+  bool operator ==(covariant User other) {
+    if (identical(this, other)) return true;
+
+    return other.nome == nome && other.email == email && other.senha == senha;
   }
+
+  @override
+  int get hashCode => nome.hashCode ^ email.hashCode ^ senha.hashCode;
 }
