@@ -2,14 +2,31 @@ import 'package:flutter/material.dart';
 
 import '../utils/app_colors.dart';
 
-class homeBottomNavBar extends StatelessWidget {
-  const homeBottomNavBar({
-    Key? key,
-  }) : super(key: key);
+// ignore: must_be_immutable
+class HomeBottomNavBar extends StatefulWidget {
+  PageController pageController;
+  HomeBottomNavBar({Key? key, required this.pageController}) : super(key: key);
 
+  @override
+  State<HomeBottomNavBar> createState() => _HomeBottomNavBarState();
+}
+
+class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
+  int current = 0;
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      currentIndex: current,
+      onTap: (value) {
+        setState(() {
+          current = value;
+          widget.pageController.animateToPage(
+            current,
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        });
+      },
 //        fixedColor: Colors.red,
 //        backgroundColor: AppColors.backgroundButtonColor,
       selectedItemColor: AppColors.titleColor,
@@ -27,22 +44,22 @@ class homeBottomNavBar extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
-          icon: Icon(Icons.home),
+          icon: const Icon(Icons.home),
           label: 'Home',
         ),
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
-          icon: Icon(Icons.money),
+          icon: const Icon(Icons.money),
           label: 'movimentações',
         ),
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
-          icon: Icon(Icons.credit_card),
+          icon: const Icon(Icons.credit_card),
           label: 'limites',
         ),
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
-          icon: Icon(Icons.account_balance),
+          icon: const Icon(Icons.account_balance),
           label: 'balanço',
         ),
       ],

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:u_finance/pages/add_ticker.dart';
-import 'package:u_finance/pages/home.dart';
 import 'package:u_finance/utils/app_colors.dart';
 import 'package:u_finance/utils/app_text_styles.dart';
 
@@ -20,8 +18,8 @@ class _WelcomeState extends State<Welcome> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: PreferredSize(
-        child: TitleContainer(title: "u-Finance"),
         preferredSize: MediaQuery.of(context).size,
+        child: TitleContainer(title: "u-Finance"),
       ),
       body: Container(
         color: AppColors.backgroundColor,

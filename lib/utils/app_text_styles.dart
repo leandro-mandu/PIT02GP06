@@ -8,4 +8,6 @@ class AppTextStyles {
       TextStyle(fontSize: 30, color: AppColors.textColor);
   static TextStyle get titleStyle =>
       TextStyle(fontSize: 36, color: AppColors.titleColor);
+  static TextStyle get dropdownStyle =>
+      TextStyle(fontSize: 20, color: AppColors.textColor);
 }

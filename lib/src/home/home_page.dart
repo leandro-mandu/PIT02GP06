@@ -1,10 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:u_finance/utils/app_colors.dart';
-import 'package:u_finance/utils/app_text_styles.dart';
+import 'package:u_finance/widgets/custom_dropdown.dart';
 import 'package:u_finance/widgets/value_tile.dart';
 
 import '../../widgets/title_container.dart';
@@ -24,14 +20,13 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: [
           TitleContainer(title: "R\$ 0,00"),
-          SizedBox(
-            height: 16,
-          ),
+          const SizedBox(height: 16),
+          const CustomDropdown(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              valueTile(value: 0.5, text: 'Ganhos'),
-              valueTile(value: 0.8, text: 'Custos', positive: false),
+              ValueTile(value: 0.5, text: 'Ganhos'),
+              ValueTile(value: 0.8, text: 'Custos', positive: false),
             ],
           ),
         ],

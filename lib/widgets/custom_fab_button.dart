@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:u_finance/pages/create_account.dart';
-import 'package:u_finance/src/home/home_page.dart';
-
-import '../pages/home.dart';
 import '../src/home/index_page.dart';
 import '../utils/app_colors.dart';
 
+// ignore: must_be_immutable
 class CustomFabButton extends StatelessWidget {
   String text;
   IconData icon;

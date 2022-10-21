@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 
+// ignore: must_be_immutable
 class TitleContainer extends StatelessWidget {
   String title;
   TitleContainer({

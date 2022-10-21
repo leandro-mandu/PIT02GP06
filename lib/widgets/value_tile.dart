@@ -3,20 +3,21 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../utils/app_text_styles.dart';
 
-class valueTile extends StatelessWidget {
+// ignore: must_be_immutable
+class ValueTile extends StatelessWidget {
   double value;
   String text;
   bool? positive;
-  valueTile({
+  ValueTile({
     Key? key,
     required this.value,
     required this.text,
     this.positive,
-  }) : super(key: key) {}
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 200,
       child: Card(
         color: AppColors.backgroundCardColor,
