@@ -13,16 +13,19 @@ class TitleContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          color: AppColors.backgroundColor,
+          color: AppColors.backgroundCardColor,
           borderRadius:
               const BorderRadius.vertical(bottom: Radius.elliptical(80, 80))),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Text(
-          title,
-          style: AppTextStyles.titleStyle,
-          textAlign: TextAlign.center,
+        child: SafeArea(
+          child: Text(
+            title,
+            style: AppTextStyles.titleStyle,
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );

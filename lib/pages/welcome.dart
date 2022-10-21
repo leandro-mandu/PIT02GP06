@@ -18,13 +18,15 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      appBar: PreferredSize(
+        child: TitleContainer(title: "u-Finance"),
+        preferredSize: MediaQuery.of(context).size,
+      ),
       body: Container(
         color: AppColors.backgroundColor,
         child: ListView(
           children: [
-            TitleContainer(
-              title: "u-Finance",
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
