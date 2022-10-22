@@ -28,10 +28,10 @@ class HomeController {
       {'genre': 'Outros', 'sold': 25, 'color': Colors.black26},
     ];
     listaGanhosPorCategoria = [
-      {'genre': 'Uber', 'sold': 250, 'color': Colors.black},
-      {'genre': '99', 'sold': 520, 'color': Colors.yellow},
-      {'genre': 'Indriver', 'sold': 100, 'color': Colors.green},
-      {'genre': 'Outros', 'sold': 25, 'color': Colors.blue},
+      {'genre': 'Uber', 'sold': 5, 'color': Colors.black},
+      {'genre': '99', 'sold': 8, 'color': Colors.yellow},
+      {'genre': 'Indriver', 'sold': 10, 'color': Colors.green},
+      {'genre': 'Outros', 'sold': 9, 'color': Colors.blue},
     ];
     updateState();
   }

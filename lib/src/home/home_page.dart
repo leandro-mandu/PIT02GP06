@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:graphic/graphic.dart';
 import 'package:u_finance/src/home/home_controller.dart';
 import 'package:u_finance/utils/app_colors.dart';
 import 'package:u_finance/widgets/custom_dropdown.dart';
 import 'package:u_finance/widgets/pie_chart.dart';
 import 'package:u_finance/widgets/value_tile.dart';
 
+import '../../widgets/bar_chart.dart';
 import '../../widgets/custom_progress_indicator.dart';
 import '../../widgets/title_container.dart';
 
@@ -66,28 +66,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               height: 200,
               width: MediaQuery.of(context).size.width * 0.8,
-              child: Chart(
-                data: const [
-                  {'genre': 'Sports', 'sold': 275},
-                  {'genre': 'Strategy', 'sold': 115},
-                  {'genre': 'Action', 'sold': 120},
-                  {'genre': 'Shooter', 'sold': 350},
-                  {'genre': 'Other', 'sold': 150},
-                ],
-                variables: {
-                  'genre': Variable(
-                    accessor: (Map map) => map['genre'] as String,
-                  ),
-                  'sold': Variable(
-                    accessor: (Map map) => map['sold'] as num,
-                  ),
-                },
-                elements: [IntervalElement()],
-                axes: [
-                  Defaults.horizontalAxis,
-                  Defaults.verticalAxis,
-                ],
-              ),
+              child: BarChart(),
             ),
           ],
         ),
