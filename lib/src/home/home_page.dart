@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graphic/graphic.dart';
+import 'package:u_finance/src/home/home_controller.dart';
 import 'package:u_finance/utils/app_colors.dart';
 import 'package:u_finance/widgets/custom_dropdown.dart';
+import 'package:u_finance/widgets/pie_chart.dart';
 import 'package:u_finance/widgets/value_tile.dart';
 
+import '../../widgets/custom_progress_indicator.dart';
 import '../../widgets/title_container.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,23 +17,80 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final HomeController controller;
+  @override
+  void initState() {
+    controller = HomeController(onUpdate: () {
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.backgroundColor,
-      child: Column(
-        children: [
-          TitleContainer(title: "R\$ 0,00"),
-          const SizedBox(height: 16),
-          const CustomDropdown(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ValueTile(value: 0.5, text: 'Ganhos'),
-              ValueTile(value: 0.8, text: 'Custos', positive: false),
-            ],
-          ),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            TitleContainer(title: "R\$ 0,00"),
+            const SizedBox(height: 16),
+            CustomDropdown(listaPeriodos: controller.listaPeriodos),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ValueTile(value: 0.5, text: 'Ganhos'),
+                ValueTile(value: 0.8, text: 'Custos', positive: false),
+              ],
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              width: 350,
+              height: 300,
+              child: controller.listaGanhosPorCategoria.isEmpty
+                  ? const CustomProgressIndicator()
+                  : PieChart(
+                      data: controller.listaGanhosPorCategoria,
+                    ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              width: 350,
+              height: 300,
+              child: controller.listaCustosPorCategoria.isEmpty
+                  ? const CircularProgressIndicator()
+                  : PieChart(
+                      data: controller.listaCustosPorCategoria,
+                    ),
+            ),
+            Container(
+              height: 200,
+              width: MediaQuery.of(context).size.width * 0.8,
+              child: Chart(
+                data: const [
+                  {'genre': 'Sports', 'sold': 275},
+                  {'genre': 'Strategy', 'sold': 115},
+                  {'genre': 'Action', 'sold': 120},
+                  {'genre': 'Shooter', 'sold': 350},
+                  {'genre': 'Other', 'sold': 150},
+                ],
+                variables: {
+                  'genre': Variable(
+                    accessor: (Map map) => map['genre'] as String,
+                  ),
+                  'sold': Variable(
+                    accessor: (Map map) => map['sold'] as num,
+                  ),
+                },
+                elements: [IntervalElement()],
+                axes: [
+                  Defaults.horizontalAxis,
+                  Defaults.verticalAxis,
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
 
