@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/utils/app_colors.dart';
 import 'package:u_finance/utils/app_text_styles.dart';
 
 import '../widgets/custom_fab_button.dart';
-import '../widgets/title_container.dart';
+import '../widgets/custom_app_bar.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -17,14 +18,11 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      appBar: PreferredSize(
-        preferredSize: MediaQuery.of(context).size,
-        child: TitleContainer(title: "u-Finance"),
-      ),
       body: Container(
         color: AppColors.backgroundColor,
         child: ListView(
           children: [
+            CustomAppBar(title: "u-Finance"),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -96,6 +94,9 @@ class _WelcomeState extends State<Welcome> {
       floatingActionButton: CustomFabButton(
         text: "Junte-se ao u-Finance  ",
         icon: Icons.navigate_next,
+        onPressed: () {
+          Modular.to.pushReplacementNamed('/login');
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );

@@ -50,17 +50,17 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
           icon: const Icon(Icons.money),
-          label: 'movimentações',
+          label: 'Transações',
         ),
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
           icon: const Icon(Icons.credit_card),
-          label: 'limites',
+          label: 'Balanço',
         ),
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
           icon: const Icon(Icons.account_balance),
-          label: 'balanço',
+          label: 'Conta',
         ),
       ],
     );

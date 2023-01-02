@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "620772781390",
+    "project_id": "u-finance-f837c",
+    "storage_bucket": "u-finance-f837c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620772781390:android:db4a37f7ab0791c862421f",
+        "android_client_info": {
+          "package_name": "com.example.u_finance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620772781390-k05hoec3djr2n0h58a2m2efoiuqf9o9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgaioRf5kJMTKbCk5oHfYBF2tma3ajPBc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620772781390-k05hoec3djr2n0h58a2m2efoiuqf9o9k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

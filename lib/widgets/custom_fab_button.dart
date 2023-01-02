@@ -1,15 +1,22 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import '../src/home/index_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:u_finance/models/user_model.dart';
+import '../src/index/index_page.dart';
 import '../utils/app_colors.dart';
+import '../utils/shared_preferences_keys.dart';
 
 // ignore: must_be_immutable
 class CustomFabButton extends StatelessWidget {
   String text;
   IconData icon;
+  Function onPressed;
   CustomFabButton({
     Key? key,
     required this.text,
     required this.icon,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -23,9 +30,7 @@ class CustomFabButton extends StatelessWidget {
             borderRadius:
                 BorderRadius.vertical(top: Radius.elliptical(80, 80))),
       ),
-      onPressed: () {
-        _navigateToNewAccountPage(context);
-      },
+      onPressed: () => onPressed(),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Row(
@@ -41,8 +46,15 @@ class CustomFabButton extends StatelessWidget {
   }
 }
 
-_navigateToNewAccountPage(BuildContext context) {
-  Navigator.of(context).pushReplacement(
-    MaterialPageRoute(builder: (context) => const IndexPage()),
-  );
-}
+// _navigateToNewAccountPage(BuildContext context) async {
+//   final user = UserModel(id: 0, nome: "Guest_0", email: "", senha: "");
+//   final prefs = await SharedPreferences.getInstance();
+//   await prefs.setString(SharedPreferencesKeys.currentUser, jsonEncode(user));
+
+//   Navigator.of(context).pushReplacement(
+//     MaterialPageRoute(
+//         builder: (context) => IndexPage(
+//               user: user,
+//             )),
+//   );
+// }

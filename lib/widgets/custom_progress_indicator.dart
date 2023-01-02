@@ -11,8 +11,8 @@ class CustomProgressIndicator extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        height: 20,
-        width: 20,
+        height: 30,
+        width: 30,
         child: CircularProgressIndicator(
           backgroundColor: AppColors.negativeValue,
           color: AppColors.backgroundButtonColor,

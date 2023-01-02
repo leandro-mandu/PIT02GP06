@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:u_finance/src/home/home_page.dart';
+import 'package:u_finance/src/index/home/home_page.dart';
+import 'package:u_finance/src/transactions/transacoes_page.dart';
 import 'package:u_finance/utils/app_colors.dart';
 
 import '../../widgets/home_bottom_nav_bar.dart';
 
 class IndexPage extends StatefulWidget {
-  const IndexPage({super.key});
+//  UserModel user;
+  IndexPage({super.key});
 
   @override
   State<IndexPage> createState() => _IndexPageState();
@@ -22,13 +24,8 @@ class _IndexPageState extends State<IndexPage> {
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: [
-          const HomePage(),
-          Icon(
-            Icons.money,
-            color: AppColors.backgroundButtonColor,
-            semanticLabel: "Saldo",
-            size: 200,
-          ),
+          HomePage(),
+          TransacoesPage(listaTransacoes: []),
           Icon(
             Icons.credit_card,
             color: AppColors.backgroundButtonColor,
