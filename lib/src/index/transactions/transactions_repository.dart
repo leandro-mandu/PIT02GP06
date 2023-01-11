@@ -3,9 +3,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/models/transacao_model.dart';
 import 'package:u_finance/utils/collections_keys.dart';
 
-import '../../models/despesa_model.dart';
-import '../../models/receita_model.dart';
-import '../authentication/auth_repository_imp.dart';
+import '../../../models/despesa_model.dart';
+import '../../../models/receita_model.dart';
+import '../../authentication/auth_repository_imp.dart';
 
 class TransactionsRepository {
   final user = Modular.get<AuthRepositoryImpl>().hasUser();

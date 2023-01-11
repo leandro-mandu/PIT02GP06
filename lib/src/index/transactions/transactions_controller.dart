@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:u_finance/models/transacao_model.dart';
-import 'package:u_finance/src/transactions/transactions_state.dart';
-import 'package:u_finance/src/transactions/transactions_repository.dart';
+import 'package:u_finance/src/index/transactions/transactions_state.dart';
+import 'package:u_finance/src/index/transactions/transactions_repository.dart';
 
 class TransactionsController {
   final _repository = Modular.get<TransactionsRepository>();

@@ -4,8 +4,8 @@ import 'package:u_finance/src/authentication/auth_repository_imp.dart';
 
 import '../../../models/bank_account_model.dart';
 import '../../../models/receita_model.dart';
-import 'package:u_finance/src/transactions/transactions_controller.dart';
-import 'package:u_finance/src/transactions/transactions_state.dart';
+import 'package:u_finance/src/index/transactions/transactions_controller.dart';
+import 'package:u_finance/src/index/transactions/transactions_state.dart';
 import 'package:u_finance/utils/app_colors.dart';
 import 'package:u_finance/widgets/custom_app_bar.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:u_finance/src/index/home/home_page.dart';
 import 'package:u_finance/src/index/wallet/wallet_page.dart';
-import 'package:u_finance/src/transactions/transactions_page.dart';
+import 'package:u_finance/src/index/transactions/transactions_page.dart';
 import 'package:u_finance/utils/app_colors.dart';
 
 import '../../widgets/home_bottom_nav_bar.dart';

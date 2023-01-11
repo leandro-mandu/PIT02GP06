@@ -9,8 +9,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/models/despesa_model.dart';
 import 'package:u_finance/models/receita_model.dart';
 import 'package:u_finance/models/transacao_model.dart';
-import 'package:u_finance/src/transactions/transactions_controller.dart';
-import 'package:u_finance/src/transactions/transactions_state.dart';
+import 'package:u_finance/src/index/transactions/transactions_controller.dart';
+import 'package:u_finance/src/index/transactions/transactions_state.dart';
 import 'package:u_finance/utils/app_colors.dart';
 import 'package:u_finance/widgets/custom_app_bar.dart';
 

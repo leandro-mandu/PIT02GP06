@@ -11,10 +11,10 @@ import 'package:u_finance/src/index/index_page.dart';
 import 'package:u_finance/src/index/wallet/bank_account_controller.dart';
 import 'package:u_finance/src/index/wallet/bank_account_form_page.dart';
 import 'package:u_finance/src/index/wallet/bank_account_repository.dart';
-import 'package:u_finance/src/transactions/transactions_page.dart';
-import 'package:u_finance/src/transactions/transaction_form_page.dart';
-import 'package:u_finance/src/transactions/transactions_controller.dart';
-import 'package:u_finance/src/transactions/transactions_repository.dart';
+import 'package:u_finance/src/index/transactions/transactions_page.dart';
+import 'package:u_finance/src/index/transactions/transaction_form_page.dart';
+import 'package:u_finance/src/index/transactions/transactions_controller.dart';
+import 'package:u_finance/src/index/transactions/transactions_repository.dart';
 
 import '../index/home/home_controller.dart';
 

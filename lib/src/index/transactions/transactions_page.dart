@@ -6,14 +6,14 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/models/transacao_model.dart';
-import 'package:u_finance/src/transactions/transactions_state.dart';
-import 'package:u_finance/src/transactions/transactions_controller.dart';
+import 'package:u_finance/src/index/transactions/transactions_state.dart';
+import 'package:u_finance/src/index/transactions/transactions_controller.dart';
 import 'package:u_finance/widgets/transaction_tile.dart';
 import 'package:u_finance/widgets/value_tile.dart';
 
-import '../../models/despesa_model.dart';
-import '../../models/receita_model.dart';
-import '../../utils/app_colors.dart';
+import '../../../models/despesa_model.dart';
+import '../../../models/receita_model.dart';
+import '../../../utils/app_colors.dart';
 
 class TransactionsPage extends StatefulWidget {
   TransactionsPage({
