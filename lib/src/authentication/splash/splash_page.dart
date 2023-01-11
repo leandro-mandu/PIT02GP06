@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
       controller.state.addListener(() {
         log("Estado Alterado ${controller.state.value.runtimeType}");
         if (controller.state.value.runtimeType == SplashStateAuthenticated) {
-          Modular.to.pushReplacementNamed('/index');
+          Modular.to.pushReplacementNamed('/index/');
         } else {
           Modular.to.pushReplacementNamed('/welcome');
         }

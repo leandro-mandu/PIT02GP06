@@ -8,11 +8,15 @@ class ValueTile extends StatelessWidget {
   double value;
   String text;
   bool? positive;
+  Widget? trailing;
+  Function? onTap;
   ValueTile({
     Key? key,
     required this.value,
     required this.text,
     this.positive,
+    this.trailing,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -20,6 +24,7 @@ class ValueTile extends StatelessWidget {
     return Card(
       color: AppColors.backgroundCardColor,
       child: ListTile(
+        onTap: () => onTap,
         leading: Container(
           width: 3,
           height: 50,
@@ -39,9 +44,10 @@ class ValueTile extends StatelessWidget {
           style: AppTextStyles.textStyle,
         ),
         title: Text(
-          "R\$ $value",
+          positive == false ? "-$value" : "$value",
           style: AppTextStyles.subtitleStyle,
         ),
+        trailing: trailing,
       ),
     );
   }

@@ -1,36 +1,59 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/models/transacao_model.dart';
+import 'package:u_finance/utils/collections_keys.dart';
 
 import '../../models/despesa_model.dart';
 import '../../models/receita_model.dart';
+import '../authentication/auth_repository_imp.dart';
 
 class TransactionsRepository {
-  List<TransacaoModel> listarTransacoes() {
-    return [
-      ReceitaModel(data: DateTime.now(), valor: 100, contaId: 0),
-      DespesaModel(data: DateTime.now(), valor: -70, contaId: 0),
-      ReceitaModel(data: DateTime.now(), valor: 50, contaId: 0),
-      DespesaModel(data: DateTime.now(), valor: -23, contaId: 0),
-      ReceitaModel(data: DateTime.now(), valor: 20, contaId: 0),
-      ReceitaModel(data: DateTime.now(), valor: 30, contaId: 0),
-      DespesaModel(data: DateTime.now(), valor: -80, contaId: 0),
-      ReceitaModel(data: DateTime.now(), valor: 100, contaId: 0),
-      DespesaModel(data: DateTime.now(), valor: -70, contaId: 0),
-      ReceitaModel(data: DateTime.now(), valor: 50, contaId: 0),
-      DespesaModel(data: DateTime.now(), valor: -23, contaId: 0),
-      ReceitaModel(data: DateTime.now(), valor: 20, contaId: 0),
-      ReceitaModel(data: DateTime.now(), valor: 30, contaId: 0),
-      DespesaModel(data: DateTime.now(), valor: -80, contaId: 0),
-    ];
+  final user = Modular.get<AuthRepositoryImpl>().hasUser();
+  Future<List<TransactionModel>> listarTransacoes() async {
+    final collections = FirebaseFirestore.instance
+        .collection(CollectionsKeys.transactions)
+        .where('accountId', isEqualTo: user!.uid);
+
+    var result = await collections.get();
+    List<TransactionModel> list = [];
+    for (var doc in result.docs) {
+      if (doc['value'] < 0) {
+        list.add(DespesaModel(
+          type: doc['type'],
+          data: (doc['date'] as Timestamp).toDate(),
+          valor: doc['value'],
+          contaId: doc['accountId'],
+          id: doc.id,
+        ));
+      } else {
+        list.add(ReceitaModel(
+          type: doc['type'],
+          data: (doc['date'] as Timestamp).toDate(),
+          valor: doc['value'],
+          contaId: doc['accountId'],
+          id: doc.id,
+        ));
+      }
+    }
+    return list;
   }
 
-  List<TransacaoModel> add(
-      TransacaoModel transacao, List<TransacaoModel> lista) {
-    lista.add(transacao);
-    return lista;
+  Future<void> save(TransactionModel transaction) async {
+    FirebaseFirestore.instance
+        .collection(CollectionsKeys.transactions)
+        .doc(transaction.id)
+        .set({
+      'accountId': user!.uid,
+      'date': transaction.data,
+      'type': transaction.type,
+      'value': transaction.valor,
+    });
   }
 
-  List<TransacaoModel> remove(int index, List<TransacaoModel> lista) {
-    lista.removeAt(index);
-    return lista;
+  void delete(String id) {
+    FirebaseFirestore.instance
+        .collection(CollectionsKeys.transactions)
+        .doc(id)
+        .delete();
   }
 }

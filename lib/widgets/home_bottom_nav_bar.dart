@@ -59,8 +59,8 @@ class _HomeBottomNavBarState extends State<HomeBottomNavBar> {
         ),
         BottomNavigationBarItem(
           backgroundColor: AppColors.backgroundColor,
-          icon: const Icon(Icons.account_balance),
-          label: 'Conta',
+          icon: const Icon(Icons.wallet),
+          label: 'Carteira',
         ),
       ],
     );

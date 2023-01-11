@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                   height: 200,
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: BarChart(
-                    data: controller.listaCustosPorCategoria,
+                    data: controller.listaGanhosPorDiaDaSemana,
                   ),
                 ),
               ],
@@ -118,14 +118,20 @@ class _HomePageState extends State<HomePage> {
         children: [
           FloatingActionButton(
             backgroundColor: AppColors.positiveValue,
-            onPressed: () {},
+            onPressed: () {
+              Modular.to.pushNamed("/index/form",
+                  arguments: {'type': 'ReceitaModel'});
+            },
             heroTag: "1",
             child: Icon(Icons.add),
           ),
           SizedBox(height: 8),
           FloatingActionButton(
             backgroundColor: AppColors.negativeValue,
-            onPressed: () {},
+            onPressed: () {
+              Modular.to.pushNamed("/index/form",
+                  arguments: {'type': 'DespesaModel'});
+            },
             heroTag: "2",
             child: Icon(Icons.remove),
           )

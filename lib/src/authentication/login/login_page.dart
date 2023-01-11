@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/src/authentication/login/login_state.dart';
 import 'package:u_finance/utils/app_colors.dart';
@@ -26,10 +24,10 @@ class _LoginPageState extends State<LoginPage> {
     controller.state.addListener(() {
       switch (controller.state.value.runtimeType) {
         case LoginStateSuccess:
-          Modular.to.pushReplacementNamed('/home');
+          Modular.to.pushReplacementNamed('/index');
           break;
         case LoginStateLoading:
-          final snackBar = SnackBar(content: Text("Carregando..."));
+          const snackBar = SnackBar(content: Text("Carregando..."));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
 
           break;
@@ -40,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
           break;
         default:
-          final snackBar = SnackBar(content: Text("Estado default"));
+          const snackBar = SnackBar(content: Text("Estado default"));
           ScaffoldMessenger.of(context).showSnackBar(snackBar);
       }
     });
@@ -54,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Column(
         children: [
           CustomAppBar(title: "u-Finance"),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Text(
@@ -91,17 +89,17 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () async {
-                      await controller.login(
+                    onPressed: () {
+                      controller.login(
                           _mailController.text, _pswController.text);
                     },
-                    child: Text("Entrar"),
+                    child: const Text("Entrar"),
                   ),
                 ],
               ),
             ),
           ),
-          Divider(),
+          const Divider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -113,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: () {
                   Modular.to.pushNamed('/create_account');
                 },
-                child: Text("Criar uma conta"),
+                child: const Text("Criar uma conta"),
               ),
             ],
           ),
@@ -121,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () {
               Modular.to.pushNamed('/home');
             },
-            child: Text("Seguir sem criar conta"),
+            child: const Text("Seguir sem criar conta"),
           ),
         ],
       ),

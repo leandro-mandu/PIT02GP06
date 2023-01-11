@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:u_finance/src/index/home/home_page.dart';
-import 'package:u_finance/src/transactions/transacoes_page.dart';
+import 'package:u_finance/src/index/wallet/wallet_page.dart';
+import 'package:u_finance/src/transactions/transactions_page.dart';
 import 'package:u_finance/utils/app_colors.dart';
 
 import '../../widgets/home_bottom_nav_bar.dart';
@@ -25,19 +26,20 @@ class _IndexPageState extends State<IndexPage> {
         controller: pageController,
         children: [
           HomePage(),
-          TransacoesPage(listaTransacoes: []),
+          TransactionsPage(),
           Icon(
             Icons.credit_card,
             color: AppColors.backgroundButtonColor,
             semanticLabel: "Credito",
             size: 200,
           ),
-          Icon(
-            Icons.account_balance,
-            color: AppColors.backgroundButtonColor,
-            semanticLabel: "Conta",
-            size: 200,
-          ),
+          WalletPage(),
+          // Icon(
+          //   Icons.wallet,
+          //   color: AppColors.backgroundButtonColor,
+          //   semanticLabel: "Carteira",
+          //   size: 200,
+          // ),
         ],
       ),
       bottomNavigationBar: HomeBottomNavBar(pageController: pageController),

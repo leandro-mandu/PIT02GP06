@@ -1,7 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:u_finance/models/despesa_model.dart';
-import 'package:u_finance/models/receita_model.dart';
 import 'package:u_finance/models/transacao_model.dart';
 import 'package:u_finance/src/index/home/home_state.dart';
 
@@ -10,14 +7,14 @@ import '../../authentication/auth_repository.dart';
 class HomeController {
   ValueNotifier<HomeState> state = ValueNotifier(HomeStateLoading());
   final AuthRepository authRepository;
-  List<TransacaoModel> listaTransacoes = [];
+  List<TransactionModel> listaTransacoes = [];
   double saldo = 0.0;
   double ganhos = 0.0;
   double custos = 0.0;
 
   late final listaPeriodos;
   late final List<Map<String, Object>> listaGanhosPorCategoria;
-  late final List<Map<String, Object>> listaCustosPorCategoria;
+  late final List<Map<String, Object>> listaGanhosPorDiaDaSemana;
   HomeController({required this.authRepository}) {
     init();
   }
@@ -52,12 +49,14 @@ class HomeController {
       DropdownMenuItem(value: 3, child: Text("26 set - 2 out")),
     ];
 
-    listaCustosPorCategoria = [
-      {'genre': 'Gasolina', 'sold': 200, 'color': Colors.yellow},
-      {'genre': 'Alugel', 'sold': 500, 'color': Colors.green},
-      {'genre': 'Alimentação', 'sold': 100, 'color': Colors.blue},
-      {'genre': 'Manutenção', 'sold': 80, 'color': Colors.red},
-      {'genre': 'Outros', 'sold': 25, 'color': Colors.black26},
+    listaGanhosPorDiaDaSemana = [
+      {'genre': 'Dom', 'sold': 200, 'color': Colors.black26},
+      {'genre': 'Seg', 'sold': 150, 'color': Colors.black26},
+      {'genre': 'Ter', 'sold': 230, 'color': Colors.black26},
+      {'genre': 'Qua', 'sold': 300, 'color': Colors.black26},
+      {'genre': 'Qui', 'sold': 200, 'color': Colors.black26},
+      {'genre': 'Sex', 'sold': 290, 'color': Colors.black26},
+      {'genre': 'Sáb', 'sold': 320, 'color': Colors.black26},
     ];
     listaGanhosPorCategoria = [
       {'genre': 'Uber', 'sold': 15, 'color': Color.fromARGB(255, 0, 22, 133)},

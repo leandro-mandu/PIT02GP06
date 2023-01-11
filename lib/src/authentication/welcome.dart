@@ -3,8 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/utils/app_colors.dart';
 import 'package:u_finance/utils/app_text_styles.dart';
 
-import '../widgets/custom_fab_button.dart';
-import '../widgets/custom_app_bar.dart';
+import '../../widgets/custom_fab_button.dart';
+import '../../widgets/custom_app_bar.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});

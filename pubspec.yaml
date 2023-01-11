@@ -43,6 +43,7 @@ dependencies:
   flutter_modular: ^5.0.3
   firebase_auth: ^4.2.1
   flutter_dotenv: ^5.0.2
+  cloud_firestore:
 
 dev_dependencies:
   flutter_test:

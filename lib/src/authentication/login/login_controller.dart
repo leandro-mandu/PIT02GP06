@@ -1,10 +1,6 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:u_finance/src/authentication/fire_auth.dart';
 import 'package:u_finance/src/authentication/login/login_state.dart';
 
 import '../auth_repository.dart';

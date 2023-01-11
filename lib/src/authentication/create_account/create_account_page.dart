@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:u_finance/src/authentication/create_account/create_account_controller.dart';
-import 'package:u_finance/utils/app_colors.dart';
+import 'package:u_finance/src/authentication/create_account/create_account_state.dart';
 import 'package:u_finance/utils/app_text_styles.dart';
 import 'package:u_finance/widgets/custom_app_bar.dart';
 
@@ -20,6 +18,33 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   final _mailController = TextEditingController();
   final _pswController = TextEditingController();
   final controller = Modular.get<CreateAccountController>();
+
+  @override
+  void initState() {
+    controller.state.addListener(() {
+      switch (controller.state.value.runtimeType) {
+        case CreateAccountStateSuccess:
+          Modular.to.pushReplacementNamed('/index');
+          break;
+        case CreateAccountStateLoading:
+          const snackBar = SnackBar(content: Text("Carregando..."));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+          break;
+        case CreateAccountStateError:
+          final snackBar = SnackBar(
+              content: Text(
+                  "ERRO! ${(controller.state.value as CreateAccountStateError).errorMsg}"));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+          break;
+        default:
+          const snackBar = SnackBar(content: Text("Estado default"));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +52,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       body: Column(
         children: [
           CustomAppBar(title: "u-Finance"),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Text(
@@ -80,9 +105,9 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                       controller.createAccount(_nameController.text,
                           _mailController.text, _pswController.text);
                     },
-                    child: Text("Criar conta"),
+                    child: const Text("Criar conta"),
                   ),
-                  Divider(),
+                  const Divider(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -94,7 +119,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                         onPressed: () {
                           Modular.to.pushNamed('/login');
                         },
-                        child: Text("Fazer login"),
+                        child: const Text("Fazer login"),
                       ),
                     ],
                   ),
